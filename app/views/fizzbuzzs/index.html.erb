@@ -15,7 +15,7 @@
     <% @fizzbuzzs.each do |fizzbuzz| %>
       <tr>
         <td><%= fizzbuzz.number %></td>
-        <td><%= %></td>
+        <td id="fizzbuzz-<%=fizzbuzz.number%>-value"><%= %></td>
         <td><%= link_to 'Show', fizzbuzz %></td>
         <td><%= link_to 'Edit', edit_fizzbuzz_path(fizzbuzz) %></td>
         <td><%= link_to 'Destroy', fizzbuzz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
