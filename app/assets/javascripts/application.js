@@ -14,3 +14,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//
+
+$(document).ready(function() {
+  for (i = 1; i <= 100; i++) {
+    $.ajax({
+      type: 'GET',
+      dataType: 'json',
+      url: 'fizzbuzzs/' + i + '/value',
+      success: function(data) {
+        $('#fizzbuzz-' + data.number + '-value').append(data.value);
+      }
+    });
+  }
+});
