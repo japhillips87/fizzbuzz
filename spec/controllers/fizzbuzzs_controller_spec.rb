@@ -24,7 +24,7 @@ RSpec.describe FizzbuzzsController, type: :controller do
   # Fizzbuzz. As you add validations to Fizzbuzz, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { number: 15 }
   }
 
   let(:invalid_attributes) {
@@ -153,6 +153,14 @@ RSpec.describe FizzbuzzsController, type: :controller do
       fizzbuzz = Fizzbuzz.create! valid_attributes
       delete :destroy, {:id => fizzbuzz.to_param}, valid_session
       expect(response).to redirect_to(fizzbuzzs_url)
+    end
+  end
+
+  describe 'GET #value' do
+    it 'returns "FizzBuzz" value' do
+      fizzbuzz = Fizzbuzz.create! valid_attributes
+      get :value, {:id => fizzbuzz.to_param, format: :json}, valid_session
+      expect(response.body).to eq({number: 15, value: 'FizzBuzz'}.to_json)
     end
   end
 

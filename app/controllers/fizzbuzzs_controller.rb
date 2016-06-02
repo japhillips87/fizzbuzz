@@ -61,6 +61,13 @@ class FizzbuzzsController < ApplicationController
     end
   end
 
+  def value
+    fizzbuzz = Fizzbuzz.find(params[:id])
+    respond_to do |format|
+      format.json { render json: { number: fizzbuzz.number, value: fizzbuzz.value } }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fizzbuzz
@@ -69,6 +76,6 @@ class FizzbuzzsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fizzbuzz_params
-      params.fetch(:fizzbuzz, {})
+      params.require(:fizzbuzz).permit(:number)
     end
 end
