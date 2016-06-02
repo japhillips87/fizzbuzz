@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Fizzbuzzs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fizzbuzzs.each do |fizzbuzz| %>
+      <tr>
+        <td><%= link_to 'Show', fizzbuzz %></td>
+        <td><%= link_to 'Edit', edit_fizzbuzz_path(fizzbuzz) %></td>
+        <td><%= link_to 'Destroy', fizzbuzz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fizzbuzz', new_fizzbuzz_path %>
